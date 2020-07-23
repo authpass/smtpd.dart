@@ -1,22 +1,6 @@
-A library for Dart developers.
+SMTP Server library for Dart.
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+Still not ready, under development. Goal is to implement a SMTP server
+capable of receiving mail **behind a postfix** instance.
 
-## Usage
-
-A simple usage example:
-
-```dart
-import 'package:smtpd/smtpd.dart';
-
-main() {
-  var awesome = new Awesome();
-}
-```
-
-## Features and bugs
-
-Please file feature requests and bugs at the [issue tracker][tracker].
-
-[tracker]: http://example.com/issues/replaceme
+Most parts are pretty much leaned on the `aiosmtpd` [python smtp library](https://github.com/aio-libs/aiosmtpd).
