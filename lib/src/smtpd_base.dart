@@ -68,7 +68,24 @@ class SmtpServer {
   List<SmtpCommand> get commands => _commands;
 
   Future<void> start() async {
-    return await _bind();
+    ProcessSignal.sigint.watch().listen((event) {
+      _logger.warning('Received sigint $event - ignoring for now.');
+    });
+    ProcessSignal.sigabrt.watch().listen((event) {
+      _logger.warning('Received sigint $event - exiting.');
+      exit(1);
+    });
+    while (true) {
+      try {
+        return await _bind();
+      } catch (e, stackTrace) {
+        _logger.severe(
+            'Got an exception, closed socket bind. Trying to rebind shortly',
+            e,
+            stackTrace);
+        await Future<void>.delayed(const Duration(seconds: 1));
+      }
+    }
   }
 
   Future<void> _bind() async {
@@ -76,8 +93,8 @@ class SmtpServer {
     _logger.fine('Bound to ${serverSocket.address}:${serverSocket.port}}');
     await for (final clientSocket in serverSocket) {
       final client = SmtpClient(clientSocket, mailHandler);
-      _logger.fine('Connection from ${clientSocket.remoteAddress}');
       try {
+        _logger.fine('Connection from ${clientSocket.remoteAddress}');
         await _handleConnection(clientSocket, client);
       } on SocketException catch (e) {
         _logger.finest('Socket exception, assume closed connection.', e);
