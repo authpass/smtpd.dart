@@ -90,8 +90,10 @@ class SmtpServer {
 
   Future<void> _bind() async {
     final serverSocket = await ServerSocket.bind(config.address, config.port);
+    var requestCount = 0;
     _logger.fine('Bound to ${serverSocket.address}:${serverSocket.port}}');
     await for (final clientSocket in serverSocket) {
+      _logger.finer('Connection established ${requestCount++}');
       final client = SmtpClient(clientSocket, mailHandler);
       try {
         _logger.fine('Connection from ${clientSocket.remoteAddress}');
