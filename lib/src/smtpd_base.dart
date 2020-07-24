@@ -69,10 +69,10 @@ class SmtpServer {
 
   Future<void> start() async {
     ProcessSignal.sigint.watch().listen((event) {
-      _logger.warning('Received sigint $event - ignoring for now.');
+      _logger.warning('Received $event - ignoring for now.');
     });
-    ProcessSignal.sigabrt.watch().listen((event) {
-      _logger.warning('Received sigint $event - exiting.');
+    ProcessSignal.sigterm.watch().listen((event) {
+      _logger.warning('Received $event - exiting.');
       exit(1);
     });
     while (true) {
