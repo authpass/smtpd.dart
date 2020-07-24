@@ -212,7 +212,7 @@ class SmtpClient {
 
   Future<SmtpStatusMessage> mailFinished(String data) async {
     try {
-      return mailHandler.handleMail(this, mailObject.copyWith(body: data));
+      return mailHandler.handleMail(this, mailObject.copyWith(content: data));
     } finally {
       reset();
     }

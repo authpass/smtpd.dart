@@ -14,10 +14,10 @@ class _$MailObjectTearOff {
 
 // ignore: unused_element
   _MailObject call(
-      {MailEnvelope envelope = const MailEnvelope(), String body}) {
+      {MailEnvelope envelope = const MailEnvelope(), String content}) {
     return _MailObject(
       envelope: envelope,
-      body: body,
+      content: content,
     );
   }
 }
@@ -27,7 +27,7 @@ const $MailObject = _$MailObjectTearOff();
 
 mixin _$MailObject {
   MailEnvelope get envelope;
-  String get body;
+  String get content;
 
   $MailObjectCopyWith<MailObject> get copyWith;
 }
@@ -36,7 +36,7 @@ abstract class $MailObjectCopyWith<$Res> {
   factory $MailObjectCopyWith(
           MailObject value, $Res Function(MailObject) then) =
       _$MailObjectCopyWithImpl<$Res>;
-  $Res call({MailEnvelope envelope, String body});
+  $Res call({MailEnvelope envelope, String content});
 
   $MailEnvelopeCopyWith<$Res> get envelope;
 }
@@ -51,12 +51,12 @@ class _$MailObjectCopyWithImpl<$Res> implements $MailObjectCopyWith<$Res> {
   @override
   $Res call({
     Object envelope = freezed,
-    Object body = freezed,
+    Object content = freezed,
   }) {
     return _then(_value.copyWith(
       envelope:
           envelope == freezed ? _value.envelope : envelope as MailEnvelope,
-      body: body == freezed ? _value.body : body as String,
+      content: content == freezed ? _value.content : content as String,
     ));
   }
 
@@ -76,7 +76,7 @@ abstract class _$MailObjectCopyWith<$Res> implements $MailObjectCopyWith<$Res> {
           _MailObject value, $Res Function(_MailObject) then) =
       __$MailObjectCopyWithImpl<$Res>;
   @override
-  $Res call({MailEnvelope envelope, String body});
+  $Res call({MailEnvelope envelope, String content});
 
   @override
   $MailEnvelopeCopyWith<$Res> get envelope;
@@ -94,29 +94,29 @@ class __$MailObjectCopyWithImpl<$Res> extends _$MailObjectCopyWithImpl<$Res>
   @override
   $Res call({
     Object envelope = freezed,
-    Object body = freezed,
+    Object content = freezed,
   }) {
     return _then(_MailObject(
       envelope:
           envelope == freezed ? _value.envelope : envelope as MailEnvelope,
-      body: body == freezed ? _value.body : body as String,
+      content: content == freezed ? _value.content : content as String,
     ));
   }
 }
 
 class _$_MailObject implements _MailObject {
-  const _$_MailObject({this.envelope = const MailEnvelope(), this.body})
+  const _$_MailObject({this.envelope = const MailEnvelope(), this.content})
       : assert(envelope != null);
 
   @JsonKey(defaultValue: const MailEnvelope())
   @override
   final MailEnvelope envelope;
   @override
-  final String body;
+  final String content;
 
   @override
   String toString() {
-    return 'MailObject(envelope: $envelope, body: $body)';
+    return 'MailObject(envelope: $envelope, content: $content)';
   }
 
   @override
@@ -126,15 +126,15 @@ class _$_MailObject implements _MailObject {
             (identical(other.envelope, envelope) ||
                 const DeepCollectionEquality()
                     .equals(other.envelope, envelope)) &&
-            (identical(other.body, body) ||
-                const DeepCollectionEquality().equals(other.body, body)));
+            (identical(other.content, content) ||
+                const DeepCollectionEquality().equals(other.content, content)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(envelope) ^
-      const DeepCollectionEquality().hash(body);
+      const DeepCollectionEquality().hash(content);
 
   @override
   _$MailObjectCopyWith<_MailObject> get copyWith =>
@@ -142,13 +142,13 @@ class _$_MailObject implements _MailObject {
 }
 
 abstract class _MailObject implements MailObject {
-  const factory _MailObject({MailEnvelope envelope, String body}) =
+  const factory _MailObject({MailEnvelope envelope, String content}) =
       _$_MailObject;
 
   @override
   MailEnvelope get envelope;
   @override
-  String get body;
+  String get content;
   @override
   _$MailObjectCopyWith<_MailObject> get copyWith;
 }

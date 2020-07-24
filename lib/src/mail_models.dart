@@ -6,7 +6,7 @@ part 'mail_models.freezed.dart';
 abstract class MailObject with _$MailObject {
   const factory MailObject({
     @Default(MailEnvelope()) MailEnvelope envelope,
-    String body,
+    String content,
   }) = _MailObject;
 }
 
