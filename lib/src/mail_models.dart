@@ -38,6 +38,8 @@ class SmtpStatusMessage {
   static const errorSyntax = SmtpStatusMessage._(500, '');
   static const errorSyntaxParameter = SmtpStatusMessage._(501, '');
   static const errorParameterNotImplemented = SmtpStatusMessage._(504, '');
+  static const errorMailboxUnavailable =
+      SmtpStatusMessage._(550, 'mailbox not found');
 
   bool get isSuccess => code >= 200 && code < 300;
 
