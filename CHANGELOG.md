@@ -1,4 +1,5 @@
 ## 0.1.0
 
-- Initial version.
+- Initial version. Basic support for receiving emails, 
+  verifying email addresses, etc.
 
