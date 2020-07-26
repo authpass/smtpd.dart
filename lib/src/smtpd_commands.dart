@@ -60,6 +60,7 @@ class CommandEhlo extends SmtpCommand {
       return const Result.error(status: SmtpStatusMessage.errorSyntaxParameter);
     }
     client.remoteHostName = argument;
+    await client.writeCrLf('250-${server.config.hostname}');
     await client.writeCrLf('250-8BITMIME');
     await client.writeCrLf('250-SMTPUTF8');
     await client.writeCrLf('250-${server.config.hostname}');
