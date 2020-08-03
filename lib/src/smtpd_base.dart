@@ -67,9 +67,15 @@ class SmtpServer {
   final List<SmtpCommand> _commands = [];
   List<SmtpCommand> get commands => _commands;
 
+  int _sigIntCount = 5;
+
   Future<void> start() async {
     ProcessSignal.sigint.watch().listen((event) {
-      _logger.warning('Received $event - ignoring for now.');
+      if (_sigIntCount-- < 1) {
+        _logger.fine('Exiting.');
+        exit(1);
+      }
+      _logger.warning('Received $event - ignoring for now. ($_sigIntCount)');
     });
     ProcessSignal.sigterm.watch().listen((event) {
       _logger.warning('Received $event - exiting.');
