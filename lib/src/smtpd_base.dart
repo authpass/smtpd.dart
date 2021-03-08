@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:collection/collection.dart' show IterableExtension;
 import 'package:logging/logging.dart';
 import 'package:meta/meta.dart';
 import 'package:smtpd/src/mail_models.dart';
@@ -10,11 +11,11 @@ import 'package:smtpd/src/smtpd_commands.dart';
 final _logger = Logger('smtpd_base');
 
 class SmtpConfig {
-  SmtpConfig(
-      {@required this.address, @required this.port, @required this.hostname})
-      : assert(address != null),
-        assert(port != null),
-        assert(hostname != null);
+  SmtpConfig({
+    required this.address,
+    required this.port,
+    required this.hostname,
+  });
 
   final InternetAddress address;
   final int port;
@@ -54,8 +55,7 @@ class BaseMailHandler extends MailHandler {
 }
 
 class SmtpServer {
-  SmtpServer(this.config, {this.mailHandler = const BaseMailHandler()})
-      : assert(config != null) {
+  SmtpServer(this.config, {this.mailHandler = const BaseMailHandler()}) {
     for (final command in createCommands()) {
       command.init(this);
       _commands.add(command);
@@ -143,10 +143,10 @@ class SmtpServer {
     final lines = Utf8Decoder(allowMalformed: true)
         .bind(clientSocket)
         .transform(LineSplitter());
-    InProgressReader _inProgressCommand;
+    InProgressReader? _inProgressCommand;
     await for (final line in lines) {
       if (_inProgressCommand != null) {
-        final status = await _inProgressCommand(line);
+        final status = await _inProgressCommand!(line);
         if (status != null) {
           _inProgressCommand = null;
           await client.writeStatus(status);
@@ -156,9 +156,8 @@ class SmtpServer {
       final commandLine = _splitCommand(line);
       _logger.finest('Received line: $line');
       final commandName = commandLine[0];
-      final command = _commands.firstWhere(
-          (element) => element.name == commandName,
-          orElse: () => null);
+      final command =
+          _commands.firstWhereOrNull((element) => element.name == commandName);
       if (command == null) {
         await client
             .writeCrLf('500 Error: command "$commandName" not recognized');
@@ -211,10 +210,10 @@ class SmtpClient {
   final Socket client;
 
   /// remote host name, set by EHLO
-  String remoteHostName;
+  String? remoteHostName;
 
   /// Current mail object being created.
-  MailObject mailObject = MailObject();
+  MailObject mailObject = MailObject.empty;
 
   Future<void> writeStatus(SmtpStatusMessage status) async {
     await writeCrLf('${status.code} ${status.message}');
@@ -227,7 +226,7 @@ class SmtpClient {
   }
 
   void reset() {
-    mailObject = MailObject();
+    mailObject = MailObject.empty;
   }
 
   void mailAddRecipient(String address) {

@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'smtpd_commands.dart';
 
@@ -9,90 +9,99 @@ part of 'smtpd_commands.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
 class _$ResultTearOff {
   const _$ResultTearOff();
 
-// ignore: unused_element
-  _ResultSuccess success({@required SmtpStatusMessage status}) {
+  _ResultSuccess success({required SmtpStatusMessage status}) {
     return _ResultSuccess(
       status: status,
     );
   }
 
-// ignore: unused_element
-  _ResultError error({@required SmtpStatusMessage status}) {
+  _ResultError error({required SmtpStatusMessage status}) {
     return _ResultError(
       status: status,
     );
   }
 
-// ignore: unused_element
   _ResultInProgress inProgress(
-      {@required SmtpStatusMessage status,
-      @required Future<SmtpStatusMessage> Function(String) readLine}) {
+      {required SmtpStatusMessage status,
+      required Future<SmtpStatusMessage?> Function(String) readLine}) {
     return _ResultInProgress(
       status: status,
       readLine: readLine,
     );
   }
 
-// ignore: unused_element
-  _ResultCloseConnection closeConnection({@required SmtpStatusMessage status}) {
+  _ResultCloseConnection closeConnection({required SmtpStatusMessage status}) {
     return _ResultCloseConnection(
       status: status,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $Result = _$ResultTearOff();
 
+/// @nodoc
 mixin _$Result {
-  SmtpStatusMessage get status;
+  SmtpStatusMessage get status => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result success(SmtpStatusMessage status),
-    @required Result error(SmtpStatusMessage status),
-    @required
-        Result inProgress(SmtpStatusMessage status,
-            Future<SmtpStatusMessage> Function(String) readLine),
-    @required Result closeConnection(SmtpStatusMessage status),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(SmtpStatusMessage status) success,
+    required TResult Function(SmtpStatusMessage status) error,
+    required TResult Function(SmtpStatusMessage status,
+            Future<SmtpStatusMessage?> Function(String) readLine)
+        inProgress,
+    required TResult Function(SmtpStatusMessage status) closeConnection,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result success(SmtpStatusMessage status),
-    Result error(SmtpStatusMessage status),
-    Result inProgress(SmtpStatusMessage status,
-        Future<SmtpStatusMessage> Function(String) readLine),
-    Result closeConnection(SmtpStatusMessage status),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(SmtpStatusMessage status)? success,
+    TResult Function(SmtpStatusMessage status)? error,
+    TResult Function(SmtpStatusMessage status,
+            Future<SmtpStatusMessage?> Function(String) readLine)?
+        inProgress,
+    TResult Function(SmtpStatusMessage status)? closeConnection,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result success(_ResultSuccess value),
-    @required Result error(_ResultError value),
-    @required Result inProgress(_ResultInProgress value),
-    @required Result closeConnection(_ResultCloseConnection value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ResultSuccess value) success,
+    required TResult Function(_ResultError value) error,
+    required TResult Function(_ResultInProgress value) inProgress,
+    required TResult Function(_ResultCloseConnection value) closeConnection,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result success(_ResultSuccess value),
-    Result error(_ResultError value),
-    Result inProgress(_ResultInProgress value),
-    Result closeConnection(_ResultCloseConnection value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ResultSuccess value)? success,
+    TResult Function(_ResultError value)? error,
+    TResult Function(_ResultInProgress value)? inProgress,
+    TResult Function(_ResultCloseConnection value)? closeConnection,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 
-  $ResultCopyWith<Result> get copyWith;
+  @JsonKey(ignore: true)
+  $ResultCopyWith<Result> get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $ResultCopyWith<$Res> {
   factory $ResultCopyWith(Result value, $Res Function(Result) then) =
       _$ResultCopyWithImpl<$Res>;
   $Res call({SmtpStatusMessage status});
 }
 
+/// @nodoc
 class _$ResultCopyWithImpl<$Res> implements $ResultCopyWith<$Res> {
   _$ResultCopyWithImpl(this._value, this._then);
 
@@ -102,14 +111,18 @@ class _$ResultCopyWithImpl<$Res> implements $ResultCopyWith<$Res> {
 
   @override
   $Res call({
-    Object status = freezed,
+    Object? status = freezed,
   }) {
     return _then(_value.copyWith(
-      status: status == freezed ? _value.status : status as SmtpStatusMessage,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as SmtpStatusMessage,
     ));
   }
 }
 
+/// @nodoc
 abstract class _$ResultSuccessCopyWith<$Res> implements $ResultCopyWith<$Res> {
   factory _$ResultSuccessCopyWith(
           _ResultSuccess value, $Res Function(_ResultSuccess) then) =
@@ -118,6 +131,7 @@ abstract class _$ResultSuccessCopyWith<$Res> implements $ResultCopyWith<$Res> {
   $Res call({SmtpStatusMessage status});
 }
 
+/// @nodoc
 class __$ResultSuccessCopyWithImpl<$Res> extends _$ResultCopyWithImpl<$Res>
     implements _$ResultSuccessCopyWith<$Res> {
   __$ResultSuccessCopyWithImpl(
@@ -129,16 +143,20 @@ class __$ResultSuccessCopyWithImpl<$Res> extends _$ResultCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object status = freezed,
+    Object? status = freezed,
   }) {
     return _then(_ResultSuccess(
-      status: status == freezed ? _value.status : status as SmtpStatusMessage,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as SmtpStatusMessage,
     ));
   }
 }
 
+/// @nodoc
 class _$_ResultSuccess implements _ResultSuccess {
-  const _$_ResultSuccess({@required this.status}) : assert(status != null);
+  const _$_ResultSuccess({required this.status});
 
   @override
   final SmtpStatusMessage status;
@@ -160,38 +178,35 @@ class _$_ResultSuccess implements _ResultSuccess {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(status);
 
+  @JsonKey(ignore: true)
   @override
   _$ResultSuccessCopyWith<_ResultSuccess> get copyWith =>
       __$ResultSuccessCopyWithImpl<_ResultSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result success(SmtpStatusMessage status),
-    @required Result error(SmtpStatusMessage status),
-    @required
-        Result inProgress(SmtpStatusMessage status,
-            Future<SmtpStatusMessage> Function(String) readLine),
-    @required Result closeConnection(SmtpStatusMessage status),
+  TResult when<TResult extends Object?>({
+    required TResult Function(SmtpStatusMessage status) success,
+    required TResult Function(SmtpStatusMessage status) error,
+    required TResult Function(SmtpStatusMessage status,
+            Future<SmtpStatusMessage?> Function(String) readLine)
+        inProgress,
+    required TResult Function(SmtpStatusMessage status) closeConnection,
   }) {
-    assert(success != null);
-    assert(error != null);
-    assert(inProgress != null);
-    assert(closeConnection != null);
     return success(status);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result success(SmtpStatusMessage status),
-    Result error(SmtpStatusMessage status),
-    Result inProgress(SmtpStatusMessage status,
-        Future<SmtpStatusMessage> Function(String) readLine),
-    Result closeConnection(SmtpStatusMessage status),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(SmtpStatusMessage status)? success,
+    TResult Function(SmtpStatusMessage status)? error,
+    TResult Function(SmtpStatusMessage status,
+            Future<SmtpStatusMessage?> Function(String) readLine)?
+        inProgress,
+    TResult Function(SmtpStatusMessage status)? closeConnection,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (success != null) {
       return success(status);
     }
@@ -200,29 +215,24 @@ class _$_ResultSuccess implements _ResultSuccess {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result success(_ResultSuccess value),
-    @required Result error(_ResultError value),
-    @required Result inProgress(_ResultInProgress value),
-    @required Result closeConnection(_ResultCloseConnection value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ResultSuccess value) success,
+    required TResult Function(_ResultError value) error,
+    required TResult Function(_ResultInProgress value) inProgress,
+    required TResult Function(_ResultCloseConnection value) closeConnection,
   }) {
-    assert(success != null);
-    assert(error != null);
-    assert(inProgress != null);
-    assert(closeConnection != null);
     return success(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result success(_ResultSuccess value),
-    Result error(_ResultError value),
-    Result inProgress(_ResultInProgress value),
-    Result closeConnection(_ResultCloseConnection value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ResultSuccess value)? success,
+    TResult Function(_ResultError value)? error,
+    TResult Function(_ResultInProgress value)? inProgress,
+    TResult Function(_ResultCloseConnection value)? closeConnection,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (success != null) {
       return success(this);
     }
@@ -231,15 +241,18 @@ class _$_ResultSuccess implements _ResultSuccess {
 }
 
 abstract class _ResultSuccess implements Result {
-  const factory _ResultSuccess({@required SmtpStatusMessage status}) =
+  const factory _ResultSuccess({required SmtpStatusMessage status}) =
       _$_ResultSuccess;
 
   @override
-  SmtpStatusMessage get status;
+  SmtpStatusMessage get status => throw _privateConstructorUsedError;
   @override
-  _$ResultSuccessCopyWith<_ResultSuccess> get copyWith;
+  @JsonKey(ignore: true)
+  _$ResultSuccessCopyWith<_ResultSuccess> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class _$ResultErrorCopyWith<$Res> implements $ResultCopyWith<$Res> {
   factory _$ResultErrorCopyWith(
           _ResultError value, $Res Function(_ResultError) then) =
@@ -248,6 +261,7 @@ abstract class _$ResultErrorCopyWith<$Res> implements $ResultCopyWith<$Res> {
   $Res call({SmtpStatusMessage status});
 }
 
+/// @nodoc
 class __$ResultErrorCopyWithImpl<$Res> extends _$ResultCopyWithImpl<$Res>
     implements _$ResultErrorCopyWith<$Res> {
   __$ResultErrorCopyWithImpl(
@@ -259,16 +273,20 @@ class __$ResultErrorCopyWithImpl<$Res> extends _$ResultCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object status = freezed,
+    Object? status = freezed,
   }) {
     return _then(_ResultError(
-      status: status == freezed ? _value.status : status as SmtpStatusMessage,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as SmtpStatusMessage,
     ));
   }
 }
 
+/// @nodoc
 class _$_ResultError implements _ResultError {
-  const _$_ResultError({@required this.status}) : assert(status != null);
+  const _$_ResultError({required this.status});
 
   @override
   final SmtpStatusMessage status;
@@ -290,38 +308,35 @@ class _$_ResultError implements _ResultError {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(status);
 
+  @JsonKey(ignore: true)
   @override
   _$ResultErrorCopyWith<_ResultError> get copyWith =>
       __$ResultErrorCopyWithImpl<_ResultError>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result success(SmtpStatusMessage status),
-    @required Result error(SmtpStatusMessage status),
-    @required
-        Result inProgress(SmtpStatusMessage status,
-            Future<SmtpStatusMessage> Function(String) readLine),
-    @required Result closeConnection(SmtpStatusMessage status),
+  TResult when<TResult extends Object?>({
+    required TResult Function(SmtpStatusMessage status) success,
+    required TResult Function(SmtpStatusMessage status) error,
+    required TResult Function(SmtpStatusMessage status,
+            Future<SmtpStatusMessage?> Function(String) readLine)
+        inProgress,
+    required TResult Function(SmtpStatusMessage status) closeConnection,
   }) {
-    assert(success != null);
-    assert(error != null);
-    assert(inProgress != null);
-    assert(closeConnection != null);
     return error(status);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result success(SmtpStatusMessage status),
-    Result error(SmtpStatusMessage status),
-    Result inProgress(SmtpStatusMessage status,
-        Future<SmtpStatusMessage> Function(String) readLine),
-    Result closeConnection(SmtpStatusMessage status),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(SmtpStatusMessage status)? success,
+    TResult Function(SmtpStatusMessage status)? error,
+    TResult Function(SmtpStatusMessage status,
+            Future<SmtpStatusMessage?> Function(String) readLine)?
+        inProgress,
+    TResult Function(SmtpStatusMessage status)? closeConnection,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(status);
     }
@@ -330,29 +345,24 @@ class _$_ResultError implements _ResultError {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result success(_ResultSuccess value),
-    @required Result error(_ResultError value),
-    @required Result inProgress(_ResultInProgress value),
-    @required Result closeConnection(_ResultCloseConnection value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ResultSuccess value) success,
+    required TResult Function(_ResultError value) error,
+    required TResult Function(_ResultInProgress value) inProgress,
+    required TResult Function(_ResultCloseConnection value) closeConnection,
   }) {
-    assert(success != null);
-    assert(error != null);
-    assert(inProgress != null);
-    assert(closeConnection != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result success(_ResultSuccess value),
-    Result error(_ResultError value),
-    Result inProgress(_ResultInProgress value),
-    Result closeConnection(_ResultCloseConnection value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ResultSuccess value)? success,
+    TResult Function(_ResultError value)? error,
+    TResult Function(_ResultInProgress value)? inProgress,
+    TResult Function(_ResultCloseConnection value)? closeConnection,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -361,15 +371,18 @@ class _$_ResultError implements _ResultError {
 }
 
 abstract class _ResultError implements Result {
-  const factory _ResultError({@required SmtpStatusMessage status}) =
+  const factory _ResultError({required SmtpStatusMessage status}) =
       _$_ResultError;
 
   @override
-  SmtpStatusMessage get status;
+  SmtpStatusMessage get status => throw _privateConstructorUsedError;
   @override
-  _$ResultErrorCopyWith<_ResultError> get copyWith;
+  @JsonKey(ignore: true)
+  _$ResultErrorCopyWith<_ResultError> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class _$ResultInProgressCopyWith<$Res>
     implements $ResultCopyWith<$Res> {
   factory _$ResultInProgressCopyWith(
@@ -378,9 +391,10 @@ abstract class _$ResultInProgressCopyWith<$Res>
   @override
   $Res call(
       {SmtpStatusMessage status,
-      Future<SmtpStatusMessage> Function(String) readLine});
+      Future<SmtpStatusMessage?> Function(String) readLine});
 }
 
+/// @nodoc
 class __$ResultInProgressCopyWithImpl<$Res> extends _$ResultCopyWithImpl<$Res>
     implements _$ResultInProgressCopyWith<$Res> {
   __$ResultInProgressCopyWithImpl(
@@ -392,27 +406,30 @@ class __$ResultInProgressCopyWithImpl<$Res> extends _$ResultCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object status = freezed,
-    Object readLine = freezed,
+    Object? status = freezed,
+    Object? readLine = freezed,
   }) {
     return _then(_ResultInProgress(
-      status: status == freezed ? _value.status : status as SmtpStatusMessage,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as SmtpStatusMessage,
       readLine: readLine == freezed
           ? _value.readLine
-          : readLine as Future<SmtpStatusMessage> Function(String),
+          : readLine // ignore: cast_nullable_to_non_nullable
+              as Future<SmtpStatusMessage?> Function(String),
     ));
   }
 }
 
+/// @nodoc
 class _$_ResultInProgress implements _ResultInProgress {
-  const _$_ResultInProgress({@required this.status, @required this.readLine})
-      : assert(status != null),
-        assert(readLine != null);
+  const _$_ResultInProgress({required this.status, required this.readLine});
 
   @override
   final SmtpStatusMessage status;
   @override
-  final Future<SmtpStatusMessage> Function(String) readLine;
+  final Future<SmtpStatusMessage?> Function(String) readLine;
 
   @override
   String toString() {
@@ -436,38 +453,35 @@ class _$_ResultInProgress implements _ResultInProgress {
       const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(readLine);
 
+  @JsonKey(ignore: true)
   @override
   _$ResultInProgressCopyWith<_ResultInProgress> get copyWith =>
       __$ResultInProgressCopyWithImpl<_ResultInProgress>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result success(SmtpStatusMessage status),
-    @required Result error(SmtpStatusMessage status),
-    @required
-        Result inProgress(SmtpStatusMessage status,
-            Future<SmtpStatusMessage> Function(String) readLine),
-    @required Result closeConnection(SmtpStatusMessage status),
+  TResult when<TResult extends Object?>({
+    required TResult Function(SmtpStatusMessage status) success,
+    required TResult Function(SmtpStatusMessage status) error,
+    required TResult Function(SmtpStatusMessage status,
+            Future<SmtpStatusMessage?> Function(String) readLine)
+        inProgress,
+    required TResult Function(SmtpStatusMessage status) closeConnection,
   }) {
-    assert(success != null);
-    assert(error != null);
-    assert(inProgress != null);
-    assert(closeConnection != null);
     return inProgress(status, readLine);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result success(SmtpStatusMessage status),
-    Result error(SmtpStatusMessage status),
-    Result inProgress(SmtpStatusMessage status,
-        Future<SmtpStatusMessage> Function(String) readLine),
-    Result closeConnection(SmtpStatusMessage status),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(SmtpStatusMessage status)? success,
+    TResult Function(SmtpStatusMessage status)? error,
+    TResult Function(SmtpStatusMessage status,
+            Future<SmtpStatusMessage?> Function(String) readLine)?
+        inProgress,
+    TResult Function(SmtpStatusMessage status)? closeConnection,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (inProgress != null) {
       return inProgress(status, readLine);
     }
@@ -476,29 +490,24 @@ class _$_ResultInProgress implements _ResultInProgress {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result success(_ResultSuccess value),
-    @required Result error(_ResultError value),
-    @required Result inProgress(_ResultInProgress value),
-    @required Result closeConnection(_ResultCloseConnection value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ResultSuccess value) success,
+    required TResult Function(_ResultError value) error,
+    required TResult Function(_ResultInProgress value) inProgress,
+    required TResult Function(_ResultCloseConnection value) closeConnection,
   }) {
-    assert(success != null);
-    assert(error != null);
-    assert(inProgress != null);
-    assert(closeConnection != null);
     return inProgress(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result success(_ResultSuccess value),
-    Result error(_ResultError value),
-    Result inProgress(_ResultInProgress value),
-    Result closeConnection(_ResultCloseConnection value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ResultSuccess value)? success,
+    TResult Function(_ResultError value)? error,
+    TResult Function(_ResultInProgress value)? inProgress,
+    TResult Function(_ResultCloseConnection value)? closeConnection,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (inProgress != null) {
       return inProgress(this);
     }
@@ -508,17 +517,21 @@ class _$_ResultInProgress implements _ResultInProgress {
 
 abstract class _ResultInProgress implements Result {
   const factory _ResultInProgress(
-          {@required SmtpStatusMessage status,
-          @required Future<SmtpStatusMessage> Function(String) readLine}) =
+          {required SmtpStatusMessage status,
+          required Future<SmtpStatusMessage?> Function(String) readLine}) =
       _$_ResultInProgress;
 
   @override
-  SmtpStatusMessage get status;
-  Future<SmtpStatusMessage> Function(String) get readLine;
+  SmtpStatusMessage get status => throw _privateConstructorUsedError;
+  Future<SmtpStatusMessage?> Function(String) get readLine =>
+      throw _privateConstructorUsedError;
   @override
-  _$ResultInProgressCopyWith<_ResultInProgress> get copyWith;
+  @JsonKey(ignore: true)
+  _$ResultInProgressCopyWith<_ResultInProgress> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class _$ResultCloseConnectionCopyWith<$Res>
     implements $ResultCopyWith<$Res> {
   factory _$ResultCloseConnectionCopyWith(_ResultCloseConnection value,
@@ -528,6 +541,7 @@ abstract class _$ResultCloseConnectionCopyWith<$Res>
   $Res call({SmtpStatusMessage status});
 }
 
+/// @nodoc
 class __$ResultCloseConnectionCopyWithImpl<$Res>
     extends _$ResultCopyWithImpl<$Res>
     implements _$ResultCloseConnectionCopyWith<$Res> {
@@ -540,17 +554,20 @@ class __$ResultCloseConnectionCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object status = freezed,
+    Object? status = freezed,
   }) {
     return _then(_ResultCloseConnection(
-      status: status == freezed ? _value.status : status as SmtpStatusMessage,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as SmtpStatusMessage,
     ));
   }
 }
 
+/// @nodoc
 class _$_ResultCloseConnection implements _ResultCloseConnection {
-  const _$_ResultCloseConnection({@required this.status})
-      : assert(status != null);
+  const _$_ResultCloseConnection({required this.status});
 
   @override
   final SmtpStatusMessage status;
@@ -572,6 +589,7 @@ class _$_ResultCloseConnection implements _ResultCloseConnection {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(status);
 
+  @JsonKey(ignore: true)
   @override
   _$ResultCloseConnectionCopyWith<_ResultCloseConnection> get copyWith =>
       __$ResultCloseConnectionCopyWithImpl<_ResultCloseConnection>(
@@ -579,32 +597,28 @@ class _$_ResultCloseConnection implements _ResultCloseConnection {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result success(SmtpStatusMessage status),
-    @required Result error(SmtpStatusMessage status),
-    @required
-        Result inProgress(SmtpStatusMessage status,
-            Future<SmtpStatusMessage> Function(String) readLine),
-    @required Result closeConnection(SmtpStatusMessage status),
+  TResult when<TResult extends Object?>({
+    required TResult Function(SmtpStatusMessage status) success,
+    required TResult Function(SmtpStatusMessage status) error,
+    required TResult Function(SmtpStatusMessage status,
+            Future<SmtpStatusMessage?> Function(String) readLine)
+        inProgress,
+    required TResult Function(SmtpStatusMessage status) closeConnection,
   }) {
-    assert(success != null);
-    assert(error != null);
-    assert(inProgress != null);
-    assert(closeConnection != null);
     return closeConnection(status);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result success(SmtpStatusMessage status),
-    Result error(SmtpStatusMessage status),
-    Result inProgress(SmtpStatusMessage status,
-        Future<SmtpStatusMessage> Function(String) readLine),
-    Result closeConnection(SmtpStatusMessage status),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(SmtpStatusMessage status)? success,
+    TResult Function(SmtpStatusMessage status)? error,
+    TResult Function(SmtpStatusMessage status,
+            Future<SmtpStatusMessage?> Function(String) readLine)?
+        inProgress,
+    TResult Function(SmtpStatusMessage status)? closeConnection,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (closeConnection != null) {
       return closeConnection(status);
     }
@@ -613,29 +627,24 @@ class _$_ResultCloseConnection implements _ResultCloseConnection {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result success(_ResultSuccess value),
-    @required Result error(_ResultError value),
-    @required Result inProgress(_ResultInProgress value),
-    @required Result closeConnection(_ResultCloseConnection value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ResultSuccess value) success,
+    required TResult Function(_ResultError value) error,
+    required TResult Function(_ResultInProgress value) inProgress,
+    required TResult Function(_ResultCloseConnection value) closeConnection,
   }) {
-    assert(success != null);
-    assert(error != null);
-    assert(inProgress != null);
-    assert(closeConnection != null);
     return closeConnection(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result success(_ResultSuccess value),
-    Result error(_ResultError value),
-    Result inProgress(_ResultInProgress value),
-    Result closeConnection(_ResultCloseConnection value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ResultSuccess value)? success,
+    TResult Function(_ResultError value)? error,
+    TResult Function(_ResultInProgress value)? inProgress,
+    TResult Function(_ResultCloseConnection value)? closeConnection,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (closeConnection != null) {
       return closeConnection(this);
     }
@@ -644,11 +653,13 @@ class _$_ResultCloseConnection implements _ResultCloseConnection {
 }
 
 abstract class _ResultCloseConnection implements Result {
-  const factory _ResultCloseConnection({@required SmtpStatusMessage status}) =
+  const factory _ResultCloseConnection({required SmtpStatusMessage status}) =
       _$_ResultCloseConnection;
 
   @override
-  SmtpStatusMessage get status;
+  SmtpStatusMessage get status => throw _privateConstructorUsedError;
   @override
-  _$ResultCloseConnectionCopyWith<_ResultCloseConnection> get copyWith;
+  @JsonKey(ignore: true)
+  _$ResultCloseConnectionCopyWith<_ResultCloseConnection> get copyWith =>
+      throw _privateConstructorUsedError;
 }

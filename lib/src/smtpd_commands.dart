@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart' show IterableExtension;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
 import 'package:smtpd/smtpd.dart';
@@ -9,19 +10,19 @@ part 'smtpd_commands.freezed.dart';
 
 final _logger = Logger('smtpd_commands');
 
-typedef InProgressReader = Future<SmtpStatusMessage> Function(String line);
+typedef InProgressReader = Future<SmtpStatusMessage?> Function(String line);
 
 @freezed
-abstract class Result with _$Result {
-  const factory Result.success({@required SmtpStatusMessage status}) =
+class Result with _$Result {
+  const factory Result.success({required SmtpStatusMessage status}) =
       _ResultSuccess;
-  const factory Result.error({@required SmtpStatusMessage status}) =
+  const factory Result.error({required SmtpStatusMessage status}) =
       _ResultError;
   const factory Result.inProgress({
-    @required SmtpStatusMessage status,
-    @required InProgressReader readLine,
+    required SmtpStatusMessage status,
+    required InProgressReader readLine,
   }) = _ResultInProgress;
-  const factory Result.closeConnection({@required SmtpStatusMessage status}) =
+  const factory Result.closeConnection({required SmtpStatusMessage status}) =
       _ResultCloseConnection;
 }
 
@@ -36,7 +37,7 @@ abstract class SmtpCommand {
   String get name;
   String get description => '';
   @protected
-  SmtpServer server;
+  late SmtpServer server;
   String get syntax => '$name $description';
 
   void init(SmtpServer server) {
@@ -80,9 +81,8 @@ class CommandHelp extends SmtpCommand {
   Future<Result> execute(SmtpClient client, String argument) async {
     var code = SmtpStatusMessage.successCompleted;
     if (argument.isNotEmpty) {
-      final command = server.commands.firstWhere(
-          (element) => element.name == argument,
-          orElse: () => null);
+      final command = server.commands
+          .firstWhereOrNull((element) => element.name == argument);
       if (command != null) {
         return Result.success(
             status: SmtpStatusMessage.successCompleted
@@ -146,7 +146,7 @@ Map<String, String> _parseParams(String arg) {
       .map((e) => e.length == 2 ? MapEntry(e[0], e[1]) : MapEntry(e[0], '')));
 }
 
-String _stripCommandKeyword(String command, String keyword) {
+String? _stripCommandKeyword(String command, String keyword) {
   assert(keyword == keyword.toUpperCase());
   if (keyword.length > command.length) {
     return null;
@@ -157,11 +157,12 @@ String _stripCommandKeyword(String command, String keyword) {
   return null;
 }
 
-T _readEmailAddress<T>(String arg, T Function(String address, String rest) cb) {
+T _readEmailAddress<T>(
+    String arg, T Function(String? address, String rest) cb) {
   final bracketIndex = arg.indexOf('>');
   if (!arg.startsWith('<') || bracketIndex < 0) {
     _logger.warning('Invalid argument to read email: $arg');
-    return null;
+    return cb(null, '');
   }
   return cb(
     arg.substring(1, bracketIndex),
@@ -180,7 +181,7 @@ class CommandRcpt extends SmtpCommand {
   Future<Result> execute(SmtpClient client, String argument) async {
     final syntaxError = SmtpStatusMessage.errorSyntaxParameter
         .withMessage('Syntax: RCPT TO: <address>');
-    final arg = _stripCommandKeyword(argument, 'TO:');
+    final arg = _stripCommandKeyword(argument, 'TO:')!;
     return await _readEmailAddress(arg, (address, rest) async {
       if (address == null) {
         return Result.error(status: syntaxError);
@@ -191,7 +192,7 @@ class CommandRcpt extends SmtpCommand {
         return Result.success(status: response);
       }
       return Result.error(status: response);
-    });
+    })!;
   }
 }
 
@@ -232,7 +233,7 @@ class CommandRset extends SmtpCommand {
 
   @override
   Future<Result> execute(SmtpClient client, String argument) async {
-    client.mailObject = MailObject();
+    client.mailObject = MailObject.empty;
     return Result.success(status: SmtpStatusMessage.successCompleted);
   }
 }
