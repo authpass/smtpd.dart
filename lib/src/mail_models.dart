@@ -3,19 +3,21 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'mail_models.freezed.dart';
 
 @freezed
-abstract class MailObject with _$MailObject {
+class MailObject with _$MailObject {
   const factory MailObject({
-    @Default(MailEnvelope()) MailEnvelope envelope,
-    String body,
+    required MailEnvelope envelope,
+    String? body,
   }) = _MailObject;
+
+  static const empty = MailObject(envelope: MailEnvelope(recipient: []));
 }
 
 @freezed
-abstract class MailEnvelope with _$MailEnvelope {
+class MailEnvelope with _$MailEnvelope {
   const factory MailEnvelope({
-    String sender,
-    Map<String, String> params,
-    @Default([]) List<String> recipient,
+    String? sender,
+    Map<String, String>? params,
+    required List<String> recipient,
   }) = _MailEnvelope;
 }
 

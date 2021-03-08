@@ -42,7 +42,7 @@ class MailSystemStatusCodes {
   final String message;
 
   @override
-  String toString({String message}) {
+  String toString({String? message}) {
     message ??= message;
     return '$classCode.$subjectCode.$detailCode'
         '${message == null ? '' : ' $message'}';
