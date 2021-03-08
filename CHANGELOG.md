@@ -1,5 +1,6 @@
-## Unreleased
+## 0.2.0
 
+- Nullsafety migration
 - Add `ReservedEmailAddresses`.
 
 ## 0.1.0
