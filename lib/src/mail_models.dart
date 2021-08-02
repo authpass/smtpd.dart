@@ -6,7 +6,7 @@ part 'mail_models.freezed.dart';
 class MailObject with _$MailObject {
   const factory MailObject({
     required MailEnvelope envelope,
-    String? content,
+    @Default('') String content,
   }) = _MailObject;
 
   static const empty = MailObject(envelope: MailEnvelope(recipient: []));
