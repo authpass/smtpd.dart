@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:logging_appenders/logging_appenders.dart';
 import 'package:smtpd/smtpd.dart';
-import 'package:smtpd/src/mail_models.dart';
 
 import 'package:logging/logging.dart';
 

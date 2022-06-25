@@ -1,10 +1,7 @@
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:meta/meta.dart';
-import 'package:smtpd/smtpd.dart';
-
 import 'package:logging/logging.dart';
-import 'package:smtpd/src/mail_models.dart';
+import 'package:smtpd/smtpd.dart';
 
 part 'smtpd_commands.freezed.dart';
 
